@@ -1,0 +1,305 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   1. DESIGN TOKENS & FIGMA VARIABLES
+   ========================================================================== */
+:root {
+  /* Brand / Primary (Sleek Royal Indigo) */
+  --color-primary-50: #f5f7ff;
+  --color-primary-100: #ebf0fe;
+  --color-primary-200: #dce4fd;
+  --color-primary-300: #c2d0fb;
+  --color-primary-400: #9cb1f8;
+  --color-primary-500: #6366f1; /* Core Indigo */
+  --color-primary-600: #4f46e5;
+  --color-primary-700: #4338ca;
+  --color-primary-850: #2a2582;
+  --color-primary-950: #1e1b4b;
+
+  /* Brand / Secondary (Teal Mint) */
+  --color-secondary-50: #f0fdfa;
+  --color-secondary-100: #ccfbf1;
+  --color-secondary-200: #99f6e4;
+  --color-secondary-300: #5eead4;
+  --color-secondary-400: #2dd4bf;
+  --color-secondary-500: #14b8a6; /* Core Teal */
+  --color-secondary-600: #0d9488;
+  --color-secondary-700: #0f766e;
+
+  /* Neutrals (Obsidian Slate System) */
+  --color-neutral-50: #f8fafc;
+  --color-neutral-100: #f1f5f9;
+  --color-neutral-200: #e2e8f0;
+  --color-neutral-300: #cbd5e1;
+  --color-neutral-400: #94a3b8;
+  --color-neutral-500: #64748b;
+  --color-neutral-600: #475569;
+  --color-neutral-700: #334155;
+  --color-neutral-800: #1e293b;
+  --color-neutral-900: #0f172a;
+  --color-neutral-955: #020617; /* Slate Black */
+
+  /* Fonts */
+  --font-family-sans: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  /* Elevational Shadows */
+  --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.06);
+  --shadow-glow: 0 0 20px 2px rgba(99, 102, 241, 0.12);
+}
+
+/* ==========================================================================
+   2. GLOBAL BODY & SCROLLBAR RULES
+   ========================================================================== */
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-family-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--color-neutral-50);
+  color: var(--color-neutral-800);
+  font-family: var(--font-family-sans);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Smooth Focus Rings */
+:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 4px;
+}
+
+/* Reusable Glassmorphism Panels */
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Premium Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.3);
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.5);
+}
+
+/* ==========================================================================
+   3. PREMIUM FIGMA KEYFRAME ANIMATIONS
+   ========================================================================== */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px 2px rgba(99, 102, 241, 0.12); }
+  50% { box-shadow: 0 0 25px 6px rgba(99, 102, 241, 0.22); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.7; transform: translateX(-50%) scale(1); }
+  50% { opacity: 1; transform: translateX(-50%) scale(1.04); }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 6s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   4. PURE CSS STATE TRANSITIONS (0% JS GLOBAL STATE CONTROLS)
+   ========================================================================== */
+
+/* Dark Mode Global Overrides via Sibling Combinator */
+#dark-mode-toggle:checked ~ div {
+  background-color: var(--color-neutral-955) !important;
+  color: var(--color-neutral-100) !important;
+}
+
+/* Specific elements background colors in Dark Mode */
+#dark-mode-toggle:checked ~ div .dark-bg-white {
+  background-color: var(--color-neutral-955) !important;
+}
+
+#dark-mode-toggle:checked ~ div .dark-bg-neutral-900 {
+  background-color: var(--color-neutral-900) !important;
+}
+
+#dark-mode-toggle:checked ~ div .dark-bg-neutral-955 {
+  background-color: var(--color-neutral-955) !important;
+}
+
+#dark-mode-toggle:checked ~ div .dark-border-neutral-800 {
+  border-color: var(--color-neutral-800) !important;
+}
+
+#dark-mode-toggle:checked ~ div .dark-border-neutral-700 {
+  border-color: var(--color-neutral-700) !important;
+}
+
+#dark-mode-toggle:checked ~ div .dark-text-white {
+  color: #ffffff !important;
+}
+
+#dark-mode-toggle:checked ~ div .dark-text-neutral-100 {
+  color: var(--color-neutral-100) !important;
+}
+
+#dark-mode-toggle:checked ~ div .dark-text-neutral-400 {
+  color: var(--color-neutral-400) !important;
+}
+
+#dark-mode-toggle:checked ~ div .dark-text-neutral-500 {
+  color: var(--color-neutral-550) !important;
+}
+
+#dark-mode-toggle:checked ~ div .dark-hover-text-white:hover {
+  color: #ffffff !important;
+}
+
+#dark-mode-toggle:checked ~ div .dark-hover-bg-neutral-850:hover {
+  background-color: rgba(30, 41, 59, 0.5) !important;
+}
+
+#dark-mode-toggle:checked ~ div .dark-hover-bg-neutral-800:hover {
+  background-color: var(--color-neutral-800) !important;
+}
+
+#dark-mode-toggle:checked ~ div .dark-hover-bg-neutral-750:hover {
+  background-color: rgba(51, 65, 85, 0.8) !important;
+}
+
+#dark-mode-toggle:checked ~ div .dark-bg-indigo-950-40 {
+  background-color: rgba(30, 27, 75, 0.4) !important;
+}
+
+#dark-mode-toggle:checked ~ div .dark-text-indigo-400 {
+  color: #818cf8 !important;
+}
+
+#dark-mode-toggle:checked ~ div .dark-bg-teal-955-40 {
+  background-color: rgba(13, 148, 136, 0.15) !important;
+}
+
+#dark-mode-toggle:checked ~ div .dark-border-teal-900-30 {
+  border-color: rgba(15, 118, 110, 0.3) !important;
+}
+
+#dark-mode-toggle:checked ~ div .dark-text-teal-400 {
+  color: #2dd4bf !important;
+}
+
+#dark-mode-toggle:checked ~ div .dark-bg-teal-955 {
+  background-color: rgba(15, 118, 110, 0.2) !important;
+}
+
+#dark-mode-toggle:checked ~ div .dark-bg-neutral-800 {
+  background-color: var(--color-neutral-800) !important;
+}
+
+/* Glassmorphism Dark Mode override */
+#dark-mode-toggle:checked ~ div .glassmorphism {
+  background: rgba(15, 23, 42, 0.65) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Scrollbar Dark Mode override */
+#dark-mode-toggle:checked ~ div ::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02) !important;
+}
+
+/* Icon visibility switches based on Dark Mode state */
+#dark-mode-toggle:checked ~ div .dark-sun-visible {
+  display: block !important;
+}
+
+#dark-mode-toggle:checked ~ div .dark-moon-hidden {
+  display: none !important;
+}
+
+/* Billing Toggle Global State Controls */
+#billing-toggle:checked ~ div .billing-switch-bg {
+  background-color: var(--color-primary-600) !important;
+}
+
+#billing-toggle:checked ~ div .billing-switch-handle {
+  transform: translateX(1.5rem) !important;
+}
+
+#billing-toggle:checked ~ div .billing-save-badge {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+  pointer-events: auto !important;
+}
+
+#billing-toggle:checked ~ div .billing-annual-only {
+  display: inline !important;
+}
+
+#billing-toggle:checked ~ div .billing-monthly-only {
+  display: none !important;
+}
+
+/* Design-System page uses #ds-billing-toggle — mirror the same switch rules */
+#ds-billing-toggle:checked ~ div .billing-switch-bg {
+  background-color: var(--color-primary-600) !important;
+}
+
+#ds-billing-toggle:checked ~ div .billing-switch-handle {
+  transform: translateX(1.25rem) !important;
+}
+
+/* ==========================================================================
+   GLOBAL INTERACTIVE STATES (Zero JS descendant selectors)
+   ========================================================================== */
+
+/* Mobile Navigation Menu Drawer */
+#mobile-menu-toggle:checked ~ div .mobile-menu-nav {
+  transform: translateX(0) !important;
+}
+
+/* Checkout Modals */
+#checkout-starter-toggle:checked ~ div .checkout-starter-modal {
+  display: flex !important;
+}
+
+#checkout-pro-toggle:checked ~ div .checkout-pro-modal {
+  display: flex !important;
+}
+
+#checkout-enterprise-toggle:checked ~ div .checkout-enterprise-modal {
+  display: flex !important;
+}
+
+/* Interactive Dropdown Selector (Design System) */
+#ds-dropdown-toggle:checked ~ div .dropdown-menu {
+  display: block !important;
+}
+
+#ds-dropdown-toggle:checked ~ div .dropdown-chevron {
+  transform: rotate(180deg) !important;
+}
+

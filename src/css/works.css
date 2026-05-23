@@ -1,0 +1,123 @@
+/* ─── How It Works Section ─── */
+.how-it-works {
+  width: min(100%, var(--content-max-width));
+  padding: 60px var(--content-side-padding) 70px;
+  margin: 0 auto;
+}
+
+.how-it-works__heading {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.how-it-works__description {
+  font-size: 14px;
+  font-weight: 400;
+  color: #444444;
+  line-height: 1.65;
+  max-width: 680px;
+  margin-bottom: 40px;
+}
+
+/* ─── Cards Grid ─── */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* ─── Card ─── */
+.card {
+  background-color: #f5f7f9;
+  border-radius: 12px;
+  padding: 28px 24px 32px;
+  position: relative;
+  overflow: hidden;
+  transition:
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.09);
+  transform: translateY(-2px);
+}
+
+/* ─── Card Image ─── */
+.card__image-wrapper {
+  position: absolute;
+  top: -43px;
+  right: -18px;
+  width: 120px;
+  height: 88px;
+  overflow: visible;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Sprite offsets — image is 3 icons side-by-side */
+.card--1 .card__sprite {
+  object-position: 0% 50%;
+}
+
+.card--2 .card__sprite {
+  object-position: 50% 50%;
+}
+
+.card--3 .card__sprite {
+  object-position: 100% 50%;
+}
+
+/* ─── Step Number ─── */
+.card__number {
+  font-size: 26px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 6px;
+  line-height: 1;
+}
+
+/* ─── Card Title ─── */
+.card__title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.35;
+  margin-bottom: 12px;
+  max-width: 160px;
+}
+
+/* ─── Card Body ─── */
+.card__body {
+  font-size: 13px;
+  font-weight: 400;
+  color: #555555;
+  line-height: 1.6;
+  max-width: 220px;
+}
+
+/* ─── Wine Subscription Boxes heading below ─── */
+.section-next-heading {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1a1a;
+  width: min(100%, var(--content-max-width));
+  padding: 40px var(--content-side-padding) 0;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --content-side-padding: 16px;
+  }
+}
+
+/* Thin border for all how-it-works cards */
+.card--1,
+.card--2,
+.card--3 {
+  border: 1px solid rgba(26, 26, 26, 0.08);
+}

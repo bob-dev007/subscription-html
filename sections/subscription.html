@@ -1,0 +1,141 @@
+﻿<section class="wine-section">
+      <!-- Heading -->
+      <h2 class="wine-section__heading">Wine Subscription Boxes</h2>
+      <p class="wine-section__sub">
+        Discover expertly curated wine boxes tailored to your taste,&nbsp;
+        Premium selections delivered to your door every month.
+      </p>
+
+      <!-- Cards grid -->
+      <div class="cards-grid" id="cardsGrid">
+        <!-- â”€â”€ Card 1: Root Sellers Row Hard Root Beer â”€â”€ -->
+        <div class="wine-card wine-card--selected">
+          <div class="wine-card__img-wrap">
+            <img
+              src="../assets/images/s-1.png"
+              alt="Root Sellers Row Hard Root Beer"
+            />
+            <span class="badge-see">See what's inside</span>
+          </div>
+          <div class="wine-card__body">
+            <h3 class="wine-card__title">Root Sellers Row Hard Root Beer...</h3>
+            <p class="wine-card__desc">
+              A smooth and refreshing hard root beer with rich caramel notes and
+              a crisp, easy-drinking finish. Perfect for a unique twist on
+              classic flavors.
+            </p>
+            <div class="wine-card__price-row">
+              <img src="../assets/images/dirham-2.png" alt="AED" class="dirham" />
+              <span class="wine-card__price">350.00</span>
+            </div>
+            <button class="btn-subscribe">Subscribe Now</button>
+          </div>
+        </div>
+
+        <!-- â”€â”€ Card 2: Krug Vintage Brut 2004 Gift Box â”€â”€ -->
+        <div class="wine-card">
+          <div class="wine-card__img-wrap">
+            <img
+              src="../assets/images/s-2.png"
+              alt="Krug Vintage Brut 2004 Gift Box"
+            />
+            <span class="badge-see">See what's inside</span>
+          </div>
+          <div class="wine-card__body">
+            <h3 class="wine-card__title">Krug Vintage Brut 2004 Gift Box</h3>
+            <p class="wine-card__desc">
+              An exceptional vintage champagne with refined bubbles, deep
+              complexity, &amp; notes of honey, citrus, and toasted brioche.
+            </p>
+            <div class="wine-card__price-row">
+              <img src="../assets/images/dirham-2.png" alt="AED" class="dirham" />
+              <span class="wine-card__price">550.00</span>
+            </div>
+            <button class="btn-subscribe">Subscribe Now</button>
+          </div>
+        </div>
+
+        <!-- â”€â”€ Card 3: Root Sellers Row (flip / list view) â”€â”€ -->
+        <div class="wine-card">
+          <div
+            class="wine-card__img-wrap wine-card__img-wrap--placeholder"
+          >
+            <!-- Placeholder grey bg for the flipped card â€” no photo shown in the screenshot -->
+            <div class="wine-card__placeholder-bg"></div>
+            <span class="badge-back">Back to description</span>
+          </div>
+          <div class="wine-card__body">
+            <h3 class="wine-card__title">Root Sellers Row Hard Root Beer</h3>
+            <ul class="wine-card__list">
+              <li><span class="bullet">1</span> Smooth &amp; refreshing</li>
+              <li><span class="bullet">2</span> Rich creamy flavor</li>
+              <li><span class="bullet">3</span> Unique alternative pick</li>
+              <li><span class="bullet">4</span> Expertly curated</li>
+              <li><span class="bullet">5</span> Perfect for casual moments</li>
+              <li><span class="bullet">6</span> Great with light snacks</li>
+              <li><span class="bullet">7</span> Fun twist in your box ðŸº</li>
+            </ul>
+            <div class="wine-card__price-row">
+              <img src="../assets/images/dirham-2.png" alt="AED" class="dirham" />
+              <span class="wine-card__price">250.00</span>
+            </div>
+            <button class="btn-subscribe">Subscribe Now</button>
+          </div>
+        </div>
+
+        <!-- â”€â”€ Card 4: Armand de Brignac Ace of Spades Brut Rose â”€â”€ -->
+        <div class="wine-card">
+          <div class="wine-card__img-wrap">
+            <img
+              src="../assets/images/s-3.png"
+              alt="Armand de Brignac Ace of Spades Brut Rose"
+            />
+            <span class="badge-see">See what's inside</span>
+          </div>
+          <div class="wine-card__body">
+            <h3 class="wine-card__title">
+              Armand de Brignac Ace of Spades Brut Rose
+            </h3>
+            <p class="wine-card__desc">
+              A bold and elegant rosÃ© champagne with vibrant red fruit flavors,
+              fine bubbles, and a silky finish. Iconic, luxurious, and crafted
+              for special moments.
+            </p>
+            <div class="wine-card__price-row">
+              <img src="../assets/images/dirham-2.png" alt="AED" class="dirham" />
+              <span class="wine-card__price">110.00</span>
+            </div>
+            <button class="btn-subscribe">Subscribe Now</button>
+          </div>
+        </div>
+      </div>
+      <!-- /cards-grid -->
+
+      <!-- Mobile carousel dots -->
+      <div class="carousel-dots" id="carouselDots">
+        <div class="dot active"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+    </section>
+    <!-- /wine-section -->
+
+    <script>
+      // Mobile carousel dot sync
+      const grid = document.getElementById("cardsGrid");
+      const dots = document.querySelectorAll(".carousel-dots .dot");
+
+      if (grid && dots.length) {
+        grid.addEventListener(
+          "scroll",
+          () => {
+            const cardWidth = grid.firstElementChild.offsetWidth + 14; // gap
+            const idx = Math.round(grid.scrollLeft / cardWidth);
+            dots.forEach((d, i) => d.classList.toggle("active", i === idx));
+          },
+          { passive: true }
+        );
+      }
+    </script>
+

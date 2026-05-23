@@ -1,0 +1,92 @@
+﻿<section class="wine-section">
+      <div class="wine-inner">
+        <!-- Heading -->
+        <h2 class="wine-heading">Recommendations from our<br />Wine Experts</h2>
+        <p class="wine-subheading">
+          Get trusted picks curated by our wine experts, tailored to your taste.
+          Discover exceptional bottles you'll love, without the guesswork.
+        </p>
+
+        <!-- Carousel -->
+        <div class="carousel-outer">
+          <!-- Prev -->
+          <button
+            class="nav-btn nav-prev"
+            aria-label="Previous"
+            onclick="slide(-1)"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2">
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+          </button>
+
+          <!-- Cards -->
+          <div class="cards-track" id="track">
+            <!-- Card 1 -->
+            <a class="expert-card" href="../pages/DetailPage.html?id=1" aria-label="View Oliver Dixon profile">
+              <img src="/assets/images/p-1.png" alt="Oliver Dixon" />
+              <div class="card-overlay"></div>
+              <div class="card-text">
+                <p class="card-name">Oliver Dixon</p>
+                <p class="card-bio">
+                  A passionate sommelier known for his deep knowledge of classic
+                  European wines and food pairings.
+                </p>
+              </div>
+            </a>
+
+            <!-- Card 2 -->
+            <a class="expert-card" href="../pages/DetailPage.html?id=2" aria-label="View Tony Dodds profile">
+              <img src="/assets/images/p-2.png" alt="Tony Dodds" />
+              <div class="card-overlay"></div>
+              <div class="card-text">
+                <p class="card-name">Tony Dodds</p>
+                <p class="card-bio">
+                  A modern wine enthusiast who explores bold flavours and shares
+                  easy wine tips for everyday drinkers.
+                </p>
+              </div>
+            </a>
+
+            <!-- Card 3 -->
+            <a class="expert-card" href="../pages/DetailPage.html?id=3" aria-label="View Shiv Menon profile">
+              <img src="/assets/images/p-1.png" alt="Shiv Menon" />
+              <div class="card-overlay"></div>
+              <div class="card-text">
+                <p class="card-name">Shiv Menon</p>
+                <p class="card-bio">
+                  A wine specialist with a refined palate, focused on premium
+                  selections and cellar curation.
+                </p>
+              </div>
+            </a>
+          </div>
+          <!-- /cards-track -->
+
+          <!-- Next -->
+          <button class="nav-btn nav-next" aria-label="Next" onclick="slide(1)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2">
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </button>
+        </div>
+        <!-- /carousel-outer -->
+      </div>
+    </section>
+
+    <script>
+      let current = 0;
+      const track = document.getElementById("track");
+
+      function slide(dir) {
+        const cards = track.querySelectorAll(".expert-card");
+        const total = cards.length;
+        const visible =
+          window.innerWidth >= 1024 ? 3 : window.innerWidth >= 640 ? 2 : 1;
+        const max = total - visible;
+        current = Math.max(0, Math.min(current + dir, max));
+        const cardWidth = cards[0].offsetWidth + 16;
+        track.scrollTo({ left: current * cardWidth, behavior: "smooth" });
+      }
+    </script>
+

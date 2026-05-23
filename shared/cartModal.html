@@ -1,0 +1,213 @@
+<div
+  class="cart-modal-overlay"
+  id="cartModalOverlay"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="cartModalTitle"
+  aria-hidden="true"
+>
+  <div class="cart-modal-card" role="document">
+    <button class="cart-modal-close" id="cartModalClose" aria-label="Close dialog">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <h2 class="cart-modal-title" id="cartModalTitle">Your Monthly Cart Will Be Emptied</h2>
+
+    <p class="cart-modal-body">
+      You have a Subscription item in your cart. Adding this item will remove your
+      Subscription item from cart.
+    </p>
+
+    <div class="cart-modal-actions">
+      <button class="cart-btn cart-btn-no" id="cartModalNo">No</button>
+      <button class="cart-btn cart-btn-yes" id="cartModalYes">Yes</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .cart-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: #00000080;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    z-index: 100;
+  }
+
+  .cart-modal-overlay.open {
+    display: flex;
+  }
+
+  .cart-modal-card {
+    background: #fff;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 400px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 32px 32px 28px;
+    position: relative;
+    box-shadow:
+      0 8px 40px rgba(0, 0, 0, 0.18),
+      0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .cart-modal-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    border-radius: 50%;
+    color: #555;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .cart-modal-close svg {
+    width: 18px;
+    height: 18px;
+    stroke-width: 2.2;
+  }
+
+  .cart-modal-title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.25;
+    color: #1a1a1a;
+    margin: 0 0 14px;
+    padding-right: 28px;
+  }
+
+  .cart-modal-body {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: #4a4a4a;
+    margin: 0 0 28px;
+  }
+
+  .cart-modal-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .cart-btn {
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 13px 0;
+    text-align: center;
+    border: none;
+    width: 100%;
+  }
+
+  .cart-btn-no {
+    background: #fff;
+    color: #1a1a1a;
+    border: 1.5px solid #d4d4d4;
+  }
+
+  .cart-btn-yes {
+    background: #3a3938;
+    color: #fff;
+    border: 1.5px solid #3a3938;
+  }
+
+  @media (min-width: 481px) {
+    .cart-modal-actions {
+      flex-direction: row;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .cart-btn {
+      width: 140px;
+      padding: 12px 0;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .cart-modal-card {
+      padding: 28px 20px 22px;
+      border-radius: 10px;
+      max-width: 100%;
+    }
+
+    .cart-modal-title {
+      font-size: 20px;
+    }
+
+    .cart-modal-body {
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+  }
+</style>
+
+<script>
+  (() => {
+    const overlay = document.getElementById("cartModalOverlay");
+    if (!overlay) return;
+
+    const closeBtn = document.getElementById("cartModalClose");
+    const noBtn = document.getElementById("cartModalNo");
+    const yesBtn = document.getElementById("cartModalYes");
+
+    const openModal = () => {
+      overlay.classList.add("open");
+      overlay.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    };
+
+    const closeModal = () => {
+      overlay.classList.remove("open");
+      overlay.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    };
+
+    document.addEventListener("click", (event) => {
+      if (event.target.closest(".cart-trigger")) {
+        openModal();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (
+        (event.key === "Enter" || event.key === " ") &&
+        event.target.closest(".cart-trigger")
+      ) {
+        event.preventDefault();
+        openModal();
+      }
+
+      if (event.key === "Escape") {
+        closeModal();
+      }
+    });
+
+    overlay.addEventListener("click", (event) => {
+      if (event.target === overlay) closeModal();
+    });
+
+    closeBtn?.addEventListener("click", closeModal);
+    noBtn?.addEventListener("click", closeModal);
+    yesBtn?.addEventListener("click", closeModal);
+  })();
+</script>

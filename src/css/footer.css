@@ -1,0 +1,444 @@
+/* ═══════════════════════════════════════════════════════════
+   footer.css  –  The Bottle Store
+   Font: Open Sans  |  BG: #3A3938  |  Text: white
+═══════════════════════════════════════════════════════════ */
+
+/* ── CSS variables ── */
+:root {
+  --footer-bg: #3a3938;
+  --footer-text: #ffffff;
+  --footer-muted: rgba(255, 255, 255, 0.65);
+  --footer-divider: rgba(255, 255, 255, 0.12);
+  --footer-hover: rgba(255, 255, 255, 0.85);
+  --footer-link-gap: 10px;
+  --acc-speed: 0.3s;
+}
+
+/* ── Reset / Base ── */
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+/* ── Root footer ── */
+.footer-root {
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  width: 100%;
+}
+
+/* Shared inner width alignment with navbar/header */
+.back-to-top-bar,
+.footer-main,
+.footer-bottom {
+  width: min(100%, var(--content-max-width, 1600px));
+  margin-inline: auto;
+  padding-left: var(--content-side-padding, 32px);
+  padding-right: var(--content-side-padding, 32px);
+}
+
+/* ─────────────────────────────────────────────
+   BACK TO TOP BAR
+───────────────────────────────────────────── */
+.back-to-top-bar {
+  border-bottom: 1px solid var(--footer-divider);
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.back-to-top-link {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--footer-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+.back-to-top-link:hover {
+  color: var(--footer-hover);
+}
+
+/* ─────────────────────────────────────────────
+   MAIN GRID  (desktop: 4 columns)
+───────────────────────────────────────────── */
+.footer-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1.15fr;
+  gap: 0;
+  padding-top: 48px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid var(--footer-divider);
+}
+
+.footer-col {
+  padding-right: 24px;
+}
+.footer-col:last-child {
+  padding-right: 0;
+}
+
+@media (max-width: 1200px) {
+  .footer-main {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 28px;
+  }
+}
+
+/* ── Section headings ── */
+.footer-heading {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-bottom: 20px;
+  color: var(--footer-text);
+}
+
+/* ─────────────────────────────────────────────
+   ABOUT COL
+───────────────────────────────────────────── */
+.logo-wrap {
+  margin-bottom: 16px;
+}
+
+.footer-logo {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.about-text {
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--footer-muted);
+  margin-bottom: 16px;
+  max-width: 240px;
+}
+
+.footer-phone {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--footer-text);
+  text-decoration: none;
+  margin-bottom: 18px;
+  transition: color 0.2s;
+}
+.footer-phone:hover {
+  color: var(--footer-hover);
+}
+
+/* ── Social ── */
+.social-row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--footer-text);
+  transition:
+    color 0.2s,
+    transform 0.2s;
+}
+.social-icon svg {
+  width: 18px;
+  height: 18px;
+}
+.social-icon:hover {
+  color: var(--footer-hover);
+  transform: translateY(-2px);
+}
+
+/* ─────────────────────────────────────────────
+   FOOTER LINKS (Products / General)
+───────────────────────────────────────────── */
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--footer-link-gap);
+}
+
+.footer-links a {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--footer-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover {
+  color: var(--footer-text);
+}
+
+/* ─────────────────────────────────────────────
+   DOWNLOAD APP COL
+───────────────────────────────────────────── */
+.app-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.app-badges {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.app-badge-link {
+  display: inline-block;
+}
+
+.app-badge {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  border-radius: 6px;
+}
+
+.qr-label {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--footer-muted);
+  max-width: 220px;
+}
+
+.qr-img {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  border-radius: 6px;
+  background: #fff;
+  padding: 4px;
+}
+
+/* ─────────────────────────────────────────────
+   BOTTOM BAR
+───────────────────────────────────────────── */
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+
+.footer-legal p {
+  font-size: 11.5px;
+  color: var(--footer-muted);
+  line-height: 1.6;
+}
+
+.payment-img {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+}
+
+.footer-copy p {
+  font-size: 11.5px;
+  color: var(--footer-muted);
+}
+
+/* ─────────────────────────────────────────────
+   HELPERS: desktop-only / mobile-only
+───────────────────────────────────────────── */
+.desktop-only {
+  display: block;
+}
+.mobile-only {
+  display: none;
+}
+
+/* ─────────────────────────────────────────────
+   ACCORDION (hidden on desktop)
+───────────────────────────────────────────── */
+.accordion-trigger {
+  display: none; /* shown only on mobile */
+}
+
+.accordion-panel {
+  /* desktop: always visible, no animation */
+}
+
+/* ═══════════════════════════════════════════════════════════
+   MOBILE  ≤ 768px
+═══════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* ── Show/hide helpers ── */
+  .desktop-only {
+    display: none !important;
+  }
+  .mobile-only {
+    display: flex !important;
+  }
+
+  /* ── Back to top ── */
+  .back-to-top-bar {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  /* ── Main grid → single column ── */
+  .footer-main {
+    display: block;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .footer-col {
+    padding-right: 0;
+    border-bottom: 1px solid var(--footer-divider);
+  }
+  .footer-col:last-child {
+    border-bottom: 1px solid var(--footer-divider);
+  }
+
+  /* ── Accordion trigger ── */
+  .accordion-trigger {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 18px 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--footer-text);
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+    gap: 12px;
+  }
+
+  .acc-icon {
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--footer-muted);
+    flex-shrink: 0;
+    transition:
+      transform var(--acc-speed),
+      color var(--acc-speed);
+  }
+
+  .accordion-trigger[aria-expanded="true"] .acc-icon {
+    transform: rotate(45deg);
+    color: var(--footer-text);
+  }
+
+  /* ── Panel: collapsed by default ── */
+  .accordion-panel {
+    display: none;
+    overflow: hidden;
+  }
+
+  .accordion-panel.open {
+    display: block;
+  }
+
+  .accordion-inner {
+    padding: 0 0 20px;
+  }
+
+  /* ── About inner ── */
+  .about-text {
+    max-width: 100%;
+  }
+
+  /* ── Link list ── */
+  .footer-links {
+    gap: 12px;
+  }
+
+  .footer-links a {
+    font-size: 13.5px;
+  }
+
+  /* ── App col ── */
+  .app-inner {
+    gap: 16px;
+  }
+
+  .app-badges {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .app-badge {
+    height: 38px;
+  }
+
+  .qr-label {
+    max-width: 100%;
+  }
+
+  /* ── Bottom bar ── */
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    gap: 12px;
+    border-top: 1px solid var(--footer-divider);
+  }
+
+  .payment-img {
+    height: 28px;
+    max-width: 100%;
+    object-fit: contain;
+  }
+}
+
+/* ─── Very small screens ─── */
+@media (max-width: 380px) {
+  .app-badges {
+    flex-direction: column;
+  }
+  .app-badge {
+    height: 36px;
+  }
+}
+
+/* Final mobile override: keep full footer content visible */
+@media (max-width: 768px) {
+  .desktop-only {
+    display: block !important;
+  }
+
+  .mobile-only,
+  .accordion-trigger {
+    display: none !important;
+  }
+
+  .footer-main {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    row-gap: 20px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--footer-divider);
+  }
+
+  .footer-col {
+    padding-right: 0;
+    border-bottom: none;
+  }
+
+  .accordion-panel {
+    display: block !important;
+    overflow: visible !important;
+  }
+}
+

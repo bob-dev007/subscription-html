@@ -1,0 +1,210 @@
+/* =========================================
+   banner.css — Pour of Discovery Banner
+   ========================================= */
+
+
+/* ── CSS Variables ── */
+:root {
+  --banner-height: 693px;
+  --banner-max-width: 1600px;
+  --banner-content-side-padding: 32px;
+  --overlay-color: #00000066;        /* 40% black */
+  --accent-blue: #3b9ede;
+  --accent-blue-light: #5ab4f0;
+  --text-white: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.82);
+  --border-blue: rgba(59, 158, 222, 0.70);
+  --dashed-blue: rgba(59, 158, 222, 0.55);
+}
+
+/* ── Reset ── */
+/* ── Banner Wrapper ──
+   Height is set here — the single source of truth.
+   background-image keeps the image purely decorative (no <img> height issues).
+   ── */
+.banner-wrapper {
+  width: 100%;
+  max-width: none;
+  height: var(--banner-height);           /* ← FIXED height */
+  margin-inline: auto;
+  position: relative;
+  overflow: hidden;
+  border: 1.5px solid var(--border-blue);
+
+  /* Hero image as background — always fills the box */
+  background-image: url('../../assets/images/banner.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: #111;
+}
+
+/* ── Dark Overlay ── */
+
+.banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--overlay-color);
+  z-index: 2;
+}
+
+/* ── Inner Content Frame ── */
+.banner-frame {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: min(100%, var(--banner-max-width));
+  margin-inline: auto;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2.5rem var(--banner-content-side-padding);
+}
+
+
+
+@keyframes borderPulse {
+  0%, 100% { opacity: 0.65; }
+  50%       { opacity: 1; }
+}
+
+/* ── Heading Block ── */
+.banner-heading {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.4rem;
+}
+
+.banner-title-top {
+  font-size: clamp(2rem, 4.5vw, 4.6rem);
+  font-weight: 300;
+  letter-spacing: 0.20em;
+  color: var(--text-white);
+  text-transform: uppercase;
+  line-height: 1.1;
+  animation: fadeSlideDown 0.85s ease both;
+}
+
+/* ── Dashed Divider ── */
+.banner-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.45rem 0;
+  animation: fadeSlideDown 1.05s ease both;
+}
+
+.banner-divider-line {
+  width: 160px;
+  border: none;
+  border-top: 2px dashed var(--dashed-blue);
+}
+
+.banner-divider-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-blue);
+  box-shadow: 0 0 8px var(--accent-blue-light);
+  animation: dotPulse 2.2s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+  0%, 100% { transform: scale(1);   opacity: 1; }
+  50%       { transform: scale(1.5); opacity: 0.65; }
+}
+
+.banner-title-bottom {
+  font-size: clamp(2.6rem, 6vw, 6rem);
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  color: var(--text-white);
+  text-transform: uppercase;
+  line-height: 1.0;
+  animation: fadeSlideDown 1.25s ease both;
+}
+
+/* ── Description ── */
+.banner-description {
+  font-size: clamp(0.70rem, 1.05vw, 0.88rem);
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1.80;
+  max-width: 350px;
+  letter-spacing: 0.04em;
+  animation: fadeSlideDown 1.5s ease both;
+}
+
+/* ── Keyframes ── */
+@keyframes fadeSlideDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Corner accents ── */
+
+
+
+
+/* =========================================
+   TABLET (769px – 1024px)
+   ========================================= */
+@media (max-width: 1024px) {
+  .banner-frame {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+/* =========================================
+   MOBILE — Portrait (≤ 640px)
+   ========================================= */
+@media (max-width: 640px) {
+  :root {
+    --banner-content-side-padding: 16px;
+  }
+
+  .banner-wrapper {
+    height: 560px;
+    border-left: none;
+    border-right: none;
+    background-size: cover;
+    background-position: 58% center;
+  }
+
+  .banner-frame {
+    padding: 1.8rem var(--banner-content-side-padding);
+    justify-content: center;
+    padding-top: 1.8rem;
+  }
+
+  .banner-frame::before {
+    top: 8px; left: 8px;
+    right: 8px; bottom: 8px;
+  }
+
+  .banner-title-top {
+    font-size: clamp(1.55rem, 8.5vw, 2.1rem);
+    letter-spacing: 0.10em;
+  }
+
+  .banner-title-bottom {
+    font-size: clamp(1.75rem, 9.5vw, 2.5rem);
+    letter-spacing: 0.06em;
+  }
+
+  .banner-divider-line { width: 90px; }
+
+  .banner-description {
+    font-size: 1.5rem;
+    max-width: 100%;
+    margin-top: 0.6rem;
+  }
+
+  .corner-tl { top: 5px; left: 5px; width: 16px; height: 16px; }
+  .corner-br { bottom: 5px; right: 5px; width: 16px; height: 16px; }
+}
+

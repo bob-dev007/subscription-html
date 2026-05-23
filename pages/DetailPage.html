@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expert Profile</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../src/css/main.css" />
+    <link rel="stylesheet" href="../src/css/navbar.css" />
+    <link rel="stylesheet" href="../src/css/DetailPage.css" />
+    <link rel="stylesheet" href="../src/css/service.css" />
+    <link rel="stylesheet" href="../src/css/footer.css" />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              display: ['"Playfair Display"', "serif"],
+              body: ['"Source Sans 3"', "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="detail-page-body">
+    <div id="navbar-root" data-include="../sections/navbar.html"></div>
+
+    <main class="detail-page-main">
+      <div class="profile-card">
+        <div class="card-inner">
+          <div class="card-image-col">
+            <img
+              id="profile-image"
+              src="../assets/images/p-1.png"
+              alt="Expert Profile"
+            />
+          </div>
+
+          <div class="card-content-col">
+            <div>
+              <h1 class="profile-name" id="profile-name">Smith Paul</h1>
+              <p class="profile-title" id="profile-title">
+                Wine Expert / Cocktail Guru
+              </p>
+
+              <div class="meta-row">
+                <div class="meta-group">
+                  <span class="meta-label">Location</span>
+                  <span class="meta-value" id="profile-location"
+                    >United Kingdom or France</span
+                  >
+                </div>
+
+                <div class="meta-group">
+                  <span class="meta-label">Social</span>
+                  <div class="social-icons">
+                    <a id="social-x-link" href="#" aria-label="Twitter / X">
+                      <img
+                        src="../assets/images/twitter.png"
+                        alt="X (Twitter)"
+                      />
+                    </a>
+                    <a id="social-linkedin-link" href="#" aria-label="LinkedIn">
+                      <img src="../assets/images/linkedin.png" alt="LinkedIn" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <p class="bio-text" id="profile-bio-1"></p>
+              <p class="bio-text" id="profile-bio-2"></p>
+            </div>
+
+            <div class="nav-buttons">
+              <button
+                class="nav-btn nav-btn--prev"
+                id="profile-prev"
+                aria-label="Previous"
+              >
+                <i class="fa-solid fa-arrow-left"></i>
+              </button>
+              <button
+                class="nav-btn nav-btn--next"
+                id="profile-next"
+                aria-label="Next"
+              >
+                <i class="fa-solid fa-arrow-right-long"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div id="service-root" data-include="../sections/service.html"></div>
+    <div id="footer-root" data-include="../sections/footer.html"></div>
+    <script src="../include.js"></script>
+
+    <script>
+      (() => {
+        const experts = [
+          {
+            id: 1,
+            name: "Oliver Dixon",
+            title: "Classic Sommelier",
+            location: "France",
+            image: "../assets/images/p-1.png",
+            socialX: "#",
+            socialLinkedIn: "#",
+            bio1: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+            bio2: "Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
+          },
+          {
+            id: 2,
+            name: "Tony Dodds",
+            title: "Modern Wine Guide",
+            location: "United Kingdom",
+            image: "../assets/images/p-2.png",
+            socialX: "#",
+            socialLinkedIn: "#",
+            bio1: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+            bio2: "Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
+          },
+          {
+            id: 3,
+            name: "Shiv Menon",
+            title: "Premium Cellar Specialist",
+            location: "Singapore",
+            image: "../assets/images/p-1.png",
+            socialX: "#",
+            socialLinkedIn: "#",
+            bio1: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+            bio2: "Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
+          },
+        ];
+
+        const params = new URLSearchParams(window.location.search);
+        const requestedId = Number.parseInt(params.get("id"), 10);
+        let currentIndex = experts.findIndex((item) => item.id === requestedId);
+        if (currentIndex < 0) currentIndex = 0;
+
+        const nodes = {
+          image: document.getElementById("profile-image"),
+          name: document.getElementById("profile-name"),
+          title: document.getElementById("profile-title"),
+          location: document.getElementById("profile-location"),
+          socialX: document.getElementById("social-x-link"),
+          socialLinkedIn: document.getElementById("social-linkedin-link"),
+          bio1: document.getElementById("profile-bio-1"),
+          bio2: document.getElementById("profile-bio-2"),
+          prev: document.getElementById("profile-prev"),
+          next: document.getElementById("profile-next"),
+        };
+
+        const render = () => {
+          const expert = experts[currentIndex];
+          nodes.image.src = expert.image;
+          nodes.image.alt = expert.name;
+          nodes.name.textContent = expert.name;
+          nodes.title.textContent = expert.title;
+          nodes.location.textContent = expert.location;
+          nodes.socialX.href = expert.socialX;
+          nodes.socialLinkedIn.href = expert.socialLinkedIn;
+          nodes.bio1.textContent = expert.bio1;
+          nodes.bio2.textContent = expert.bio2;
+          document.title = `${expert.name} - Profile`;
+
+          const nextUrl = `${window.location.pathname}?id=${expert.id}`;
+          window.history.replaceState(null, "", nextUrl);
+        };
+
+        nodes.prev.addEventListener("click", () => {
+          currentIndex = (currentIndex - 1 + experts.length) % experts.length;
+          render();
+        });
+
+        nodes.next.addEventListener("click", () => {
+          currentIndex = (currentIndex + 1) % experts.length;
+          render();
+        });
+
+        render();
+      })();
+    </script>
+  </body>
+</html>

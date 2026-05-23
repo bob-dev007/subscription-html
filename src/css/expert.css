@@ -1,0 +1,203 @@
+#expert-root,
+#expert-root *,
+#expert-root *::before,
+#expert-root *::after {
+  box-sizing: border-box;
+}
+
+#expert-root .wine-section {
+  width: 100%;
+  padding: 64px 24px 72px;
+  background: #ffffff;
+  overflow-x: clip;
+}
+
+#expert-root .wine-inner {
+  max-width: 900px;
+  max-height: none;
+  margin: 0 auto;
+}
+
+#expert-root .wine-heading {
+  font-family: "Open Sans", sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #111111;
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+#expert-root .wine-subheading {
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #555555;
+  text-align: center;
+  line-height: 1.65;
+  max-width: 430px;
+  margin: 0 auto 48px;
+}
+
+#expert-root .carousel-outer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+#expert-root .nav-btn {
+  position: absolute;
+  z-index: 10;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid #cccccc;
+  border-radius: 50%;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  flex-shrink: 0;
+  padding: 0;
+}
+
+#expert-root .nav-btn:hover {
+  border-color: #888888;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+#expert-root .nav-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+#expert-root .nav-prev {
+  left: -54px;
+}
+
+#expert-root .nav-next {
+  right: -54px;
+}
+
+#expert-root .cards-track {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  overflow: hidden;
+}
+
+#expert-root .expert-card {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  flex: 0 0 calc((100% - 32px) / 3);
+  max-width: calc((100% - 32px) / 3);
+  aspect-ratio: 155 / 224;
+  cursor: pointer;
+}
+
+#expert-root .expert-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+#expert-root .card-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.05) 0%,
+    rgba(0, 0, 0, 0.15) 40%,
+    rgba(0, 0, 0, 0.75) 100%
+  );
+  pointer-events: none;
+}
+
+#expert-root .card-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding: 16px 14px 18px;
+}
+
+#expert-root .card-name {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+#expert-root .card-bio {
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.55;
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  #expert-root .expert-card {
+    flex: 0 0 calc((100% - 16px) / 2);
+    max-width: calc((100% - 16px) / 2);
+  }
+
+  #expert-root .nav-prev {
+    left: -44px;
+  }
+
+  #expert-root .nav-next {
+    right: -44px;
+  }
+}
+
+@media (max-width: 639px) {
+  #expert-root .wine-section {
+    padding: 40px 16px 52px;
+  }
+
+  #expert-root .wine-heading {
+    font-size: 1.45rem;
+    text-align: left;
+    line-height: 1.3;
+  }
+
+  #expert-root .wine-subheading {
+    text-align: left;
+    margin-left: 0;
+    max-width: 100%;
+    margin-bottom: 28px;
+  }
+
+  #expert-root .cards-track {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+
+  #expert-root .cards-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  #expert-root .expert-card {
+    flex: 0 0 82%;
+    max-width: 82%;
+    aspect-ratio: 4 / 5;
+    scroll-snap-align: start;
+  }
+
+  #expert-root .nav-btn {
+    display: none;
+  }
+}

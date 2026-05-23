@@ -1,0 +1,320 @@
+/* detailPage.css — Smith Paul Profile Card */
+
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400;600&display=swap");
+
+/* ── Reset & Base ── */
+:root {
+  --color-white: #ffffff;
+  --color-black: #1a1a1a;
+  --color-label: #999999;
+  --color-text: #2d2d2d;
+  --color-subtext: #444444;
+  --color-border: #e0e0e0;
+  --color-btn-bg: #222222;
+  --color-btn-icon: #ffffff;
+  --font-display: "Playfair Display", serif;
+  --font-body: "Source Sans 3", sans-serif;
+}
+
+html,
+body {
+  min-height: 100%;
+  background-color: #f4f4f2;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+.detail-page-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 52px var(--content-side-padding, 32px) 68px;
+}
+
+/* ── Card Wrapper ── */
+.profile-card {
+  background: var(--color-white);
+  max-width: var(--content-max-width, 1600px);
+  width: 100%;
+  border-radius: 2px;
+  box-shadow: none;
+  overflow: visible;
+}
+
+/* ══════════════════════════════
+   DESKTOP LAYOUT (≥ 768px)
+══════════════════════════════ */
+.card-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  min-height: 560px;
+}
+
+/* Left: Image */
+.card-image-col {
+  flex: 0 0 430px;
+  width: 430px;
+  overflow: hidden;
+}
+
+.card-image-col img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+/* Right: Content */
+.card-content-col {
+  flex: 1;
+  padding: 10px 56px 14px 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Name & Title */
+.profile-name {
+  font-family: var(--font-display);
+  font-size: 3.2rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-black);
+  line-height: 1.15;
+  margin-bottom: 6px;
+}
+
+.profile-title {
+  font-family: var(--font-body);
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--color-subtext);
+  letter-spacing: 0.01em;
+  margin-bottom: 40px;
+}
+
+/* Meta Row: Location + Social */
+.meta-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 130px;
+  margin-bottom: 42px;
+}
+
+.meta-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.meta-label {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-label);
+}
+
+.meta-value {
+  font-family: var(--font-body);
+  font-size: 1.75rem;
+  font-weight: 400;
+  color: var(--color-black);
+}
+
+/* Social Icons */
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 2px;
+}
+
+.social-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.social-icons a:hover {
+  opacity: 0.65;
+}
+
+.social-icons img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Bio Text */
+.bio-text {
+  font-family: var(--font-body);
+  font-size: 1.5rem;
+  line-height: 1.72;
+  color: var(--color-subtext);
+  margin-bottom: 24px;
+}
+
+.bio-text + .bio-text {
+  margin-bottom: 0;
+}
+
+/* Navigation Buttons */
+.nav-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 14px;
+  padding: 18px 0 0;
+  margin-left: 24px;
+}
+
+.nav-btn {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-border);
+  background: var(--color-white);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-black);
+  font-size: 1rem;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+  line-height: 1;
+}
+
+.nav-btn:hover {
+  background: var(--color-btn-bg);
+  border-color: var(--color-btn-bg);
+  color: var(--color-btn-icon);
+}
+
+.nav-btn.active,
+.nav-btn--next {
+  background: var(--color-btn-bg);
+  border-color: var(--color-btn-bg);
+  color: var(--color-btn-icon);
+}
+
+/* Arrow SVG */
+.nav-btn svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ══════════════════════════════
+   MOBILE LAYOUT (< 768px)
+══════════════════════════════ */
+@media (max-width: 767px) {
+  body {
+    background: var(--color-white);
+  }
+
+  .detail-page-main {
+    padding: 0;
+  }
+
+  .profile-card {
+    max-width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .card-inner {
+    flex-direction: column;
+  }
+
+  /* Full-width image on mobile */
+  .card-image-col {
+    flex: none;
+    width: 100%;
+    height: 360px;
+  }
+
+  .card-image-col img {
+    object-position: center 20%;
+  }
+
+  /* Content padding */
+  .card-content-col {
+    padding: 28px 20px 24px;
+  }
+
+  .profile-name {
+    font-size: 2rem;
+    margin-bottom: 4px;
+  }
+
+  .profile-title {
+    font-size: 1.15rem;
+    margin-bottom: 24px;
+  }
+
+  /* Meta: stack or side-by-side small gap */
+  .meta-row {
+    gap: 36px;
+    margin-bottom: 24px;
+  }
+
+  .meta-label {
+    font-size: 0.5625rem;
+    letter-spacing: 0.1em;
+  }
+
+  .meta-value {
+    font-size: 1rem;
+  }
+
+  .social-icons img {
+    width: 22px;
+    height: 22px;
+  }
+
+  .bio-text {
+    font-size: 1rem;
+    line-height: 1.65;
+    margin-bottom: 12px;
+  }
+
+  .nav-buttons {
+    justify-content: center;
+    margin-left: 0;
+    padding: 18px 0 0;
+  }
+
+  .nav-btn {
+    width: 42px;
+    height: 42px;
+    font-size: 1rem;
+  }
+}
+
+/* ══════════════════════════════
+   VERY SMALL SCREENS (< 380px)
+══════════════════════════════ */
+@media (max-width: 380px) {
+  .card-content-col {
+    padding: 20px 16px 16px;
+  }
+
+  .meta-row {
+    gap: 24px;
+  }
+}
