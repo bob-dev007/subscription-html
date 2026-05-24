@@ -287,6 +287,12 @@ body {
     padding-bottom: 10px;
   }
 
+  .back-to-top-link {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+  }
+
   /* ── Main grid → single column ── */
   .footer-main {
     display: block;
@@ -309,20 +315,20 @@ body {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 18px 0;
+    padding: 20px 0;
     background: transparent;
     border: none;
     cursor: pointer;
     color: var(--footer-text);
     font-family: "Open Sans", sans-serif;
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 16px;
+    font-weight: 700;
     text-align: left;
     gap: 12px;
   }
 
   .acc-icon {
-    font-size: 22px;
+    font-size: 34px;
     font-weight: 300;
     line-height: 1;
     color: var(--footer-muted);
@@ -348,7 +354,7 @@ body {
   }
 
   .accordion-inner {
-    padding: 0 0 20px;
+    padding: 0 0 24px;
   }
 
   /* ── About inner ── */
@@ -388,16 +394,20 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 28px;
+    padding-bottom: 28px;
     gap: 12px;
-    border-top: 1px solid var(--footer-divider);
   }
 
   .payment-img {
-    height: 28px;
+    height: auto;
     max-width: 100%;
     object-fit: contain;
+  }
+
+  .footer-legal p,
+  .footer-copy p {
+    font-size: 14px;
   }
 }
 
@@ -411,34 +421,4 @@ body {
   }
 }
 
-/* Final mobile override: keep full footer content visible */
-@media (max-width: 768px) {
-  .desktop-only {
-    display: block !important;
-  }
-
-  .mobile-only,
-  .accordion-trigger {
-    display: none !important;
-  }
-
-  .footer-main {
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-    row-gap: 20px;
-    padding-top: 24px;
-    padding-bottom: 24px;
-    border-bottom: 1px solid var(--footer-divider);
-  }
-
-  .footer-col {
-    padding-right: 0;
-    border-bottom: none;
-  }
-
-  .accordion-panel {
-    display: block !important;
-    overflow: visible !important;
-  }
-}
 
