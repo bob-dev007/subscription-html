@@ -2,7 +2,6 @@
    TESTIMONIALS SECTION — testimonial.css
    ============================================ */
 
-
 /* ── CSS Variables ─────────────────────────── */
 :root {
   --bg-section: #f5f7f9;
@@ -254,6 +253,10 @@
    NO horizontal overflow / no broken cards.
    Fades are hidden on mobile (no room needed).
    ═══════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════
+   RESPONSIVE — Mobile  ≤ 540px
+   2-row horizontal scroll with left/right overlays
+   ═══════════════════════════════════════════════ */
 @media (max-width: 540px) {
   .testimonials-section {
     padding: 48px 0 56px;
@@ -273,22 +276,59 @@
     font-size: 24px;
   }
 
-  /* Hide the side fades on mobile — no space for them */
-  .testimonials-grid-wrapper::before,
-  .testimonials-grid-wrapper::after {
-    display: none;
+  /* Wrapper clips the grid overflow and hosts the gradient overlays */
+  .testimonials-grid-wrapper {
+    position: relative;
+    overflow: hidden;
+    margin: 0 -16px; /* bleed to screen edges */
+    padding: 0 16px;
   }
 
+  /* LEFT gradient overlay — #F5F7F9 */
+  .testimonials-grid-wrapper::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 40px;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(
+      to right,
+      #f5f7f9 0%,
+      rgba(245, 247, 249, 0) 100%
+    );
+  }
+
+  /* RIGHT gradient overlay — #F5F7F9 */
+  .testimonials-grid-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 48px;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(
+      to left,
+      #f5f7f9 0%,
+      rgba(245, 247, 249, 0) 100%
+    );
+  }
+
+  /* 2-row horizontal scroll grid */
   .testimonials-grid {
     display: grid;
-    grid-template-rows: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(2, auto);
     grid-auto-flow: column;
-    grid-auto-columns: 280px;
-    gap: 18px;
+    grid-auto-columns: 260px;
+    gap: 14px;
     overflow-x: auto;
     overflow-y: hidden;
     width: 100%;
-    padding: 6px 2px 12px;
+    padding: 6px 40px 16px 4px;
     scroll-snap-type: x proximity;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
@@ -299,26 +339,26 @@
   }
 
   .testimonial-card {
-    width: 280px;
-    min-width: 280px;
-    min-height: 236px;
+    width: 260px;
+    min-width: 260px;
+    min-height: 220px;
     padding: 18px 16px 16px;
     gap: 12px;
     scroll-snap-align: start;
   }
 
   .card-body {
-    font-size: 13.5px;
-    line-height: 1.55;
+    font-size: 13px;
+    line-height: 1.6;
   }
 
   .author-name {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
   }
 
   .author-location {
-    font-size: 13px;
+    font-size: 12px;
   }
 
   .quote-icon svg {
