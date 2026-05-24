@@ -37,16 +37,16 @@ Because `include.js` loads section files with `fetch()`, the site must run from 
 2. Install the **Live Server** extension.
 3. Right-click `index.html` and select **Open with Live Server**.
 
-### Option 2: Python HTTP Server (Port 8080)
+### Option 2: Node HTTP Server (Port 8080)
 
 From the project root:
 
 ```bash
-python -m http.server 8080
+npx http-server -p 8080
 ```
 
 ```powershell
-python -m http.server 8080
+npx http-server -p 8080
 ```
 
 Then open:
